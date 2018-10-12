@@ -1,0 +1,16 @@
+{% load cms_tags static sekizai_tags %}
+{% if instance.is_published %}
+{% for plugin in instance.child_plugin_instances %}
+{% render_plugin plugin %}
+{% endfor %}
+{% elif user.is_authenticated and user.is_staff %}
+{% if show_wrapper %}
+<div class="time-wizard" style="border: 2px solid red;">
+{% endif %}
+  {% for plugin in instance.child_plugin_instances %}
+  {% render_plugin plugin %}
+  {% endfor %}
+{% if show_wrapper %}
+</div>
+{% endif %}
+{% endif %}
