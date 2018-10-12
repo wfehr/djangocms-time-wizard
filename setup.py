@@ -10,7 +10,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='djangocms-time-wizard',
-    version='0.1.0',
+    version='0.1.1',
     packages=find_packages(),
     install_requires=[
         'django-cms',
@@ -18,7 +18,7 @@ setup(
         'django<2.0',
     ],
     include_package_data=True,
-    description='Date and time dependend content manipulation',
+    description='Simple plugin with django-time-wizard relation',
     long_description=README,
     url='https://github.com/wfehr/djangocms-time-wizard',
     download_url='https://github.com/wfehr/djangocms-time-wizard/tarball/master',
