@@ -1,6 +1,7 @@
 import os
 
 from setuptools import find_packages, setup
+from time_wizard import __version__
 
 with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
     README = readme.read()
@@ -10,11 +11,11 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='djangocms-time-wizard',
-    version='0.1.1',
+    version=__version__,
     packages=find_packages(),
     install_requires=[
         'django-cms',
-        'django-time-wizard',
+        'django-time-wizard<0.2',
         'django<2.0',
     ],
     include_package_data=True,
@@ -23,7 +24,7 @@ setup(
     url='https://github.com/wfehr/djangocms-time-wizard',
     download_url='https://github.com/wfehr/djangocms-time-wizard/tarball/master',
     author='Wolfgang Fehr',
-    author_email='wolfgangfehr@fotopuzzle.de',
+    author_email='dev@wfehr.de',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
