@@ -35,4 +35,4 @@ class TimeWizardInlinePlugin(PolymorphicInlineSupportMixin, CMSPluginBase):
 
 
 plugin_pool.register_plugin(TimeWizardPlugin)
-plugin_pool.register_plugin(TimeInlineWizardPlugin)
+plugin_pool.register_plugin(TimeWizardInlinePlugin)
