@@ -1,7 +1,7 @@
 import os
 
 from setuptools import find_packages, setup
-from time_wizard import __version__
+from djangocms_time_wizard import __version__
 
 with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
     README = readme.read()
