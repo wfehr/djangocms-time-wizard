@@ -15,8 +15,8 @@ setup(
     packages=find_packages(),
     install_requires=[
         'django-cms',
-        'django-time-wizard<0.2',
-        'django<2.0',
+        'django-time-wizard',
+        'django<3.0',
     ],
     include_package_data=True,
     description='Simple plugin with django-time-wizard relation',
