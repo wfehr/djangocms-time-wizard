@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('time_wizard', '0001_initial'),
+        ('time_wizard', '0003_auto_20190706_0833'),
         ('cms', '0020_old_tree_cleanup'),
     ]
 
