@@ -7,31 +7,27 @@ from polymorphic.admin import PolymorphicInlineSupportMixin
 from time_wizard.admin import PeriodModelInline
 
 
-class TimeWizardPlugin(CMSPluginBase):
-    model = TimeWizardModel
+class TimeWizardPluginBase(CMSPluginBase):
     module = _('Time Wizard')
+    render_template = 'djangocms_time_wizard/time_wizard.html'
+    allow_children = True
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        context['show_wrapper'] = DJANGOCMS_TIME_WIZARD_WRAPPER
+        return context
+
+
+class TimeWizardPlugin(TimeWizardPluginBase):
+    model = TimeWizardModel
     name = _('Time Wizard')
-    render_template = 'djangocms_time_wizard/time_wizard.html'
-    allow_children = True
-
-    def render(self, context, instance, placeholder):
-        context = super().render(context, instance, placeholder)
-        context['show_wrapper'] = DJANGOCMS_TIME_WIZARD_WRAPPER
-        return context
 
 
-class TimeWizardInlinePlugin(PolymorphicInlineSupportMixin, CMSPluginBase):
+class TimeWizardInlinePlugin(PolymorphicInlineSupportMixin,
+                             TimeWizardPluginBase):
     model = TimeWizardInlineModel
-    module = _('Time Wizard Inline')
-    name = _('Time Wizard Inline')
-    render_template = 'djangocms_time_wizard/time_wizard.html'
-    allow_children = True
+    name = _('Time Wizard (inline)')
     inlines = [PeriodModelInline]
-
-    def render(self, context, instance, placeholder):
-        context = super().render(context, instance, placeholder)
-        context['show_wrapper'] = DJANGOCMS_TIME_WIZARD_WRAPPER
-        return context
 
 
 plugin_pool.register_plugin(TimeWizardPlugin)
