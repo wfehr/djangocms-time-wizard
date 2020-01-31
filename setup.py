@@ -22,7 +22,8 @@ setup(
     description='Simple plugin with django-time-wizard relation',
     long_description=README,
     url='https://github.com/wfehr/djangocms-time-wizard',
-    download_url='https://github.com/wfehr/djangocms-time-wizard/tarball/master',
+    download_url='https://github.com/wfehr/djangocms-time-wizard/'
+                 'tarball/master',
     author='Wolfgang Fehr',
     author_email='dev@wfehr.de',
     classifiers=[

@@ -41,3 +41,9 @@ Requirements
 
 - django-cms
 - django-time-wizard
+
+Tests
+=====
+
+Setup your test environment with `virtualenv` and install the requirements
+with `pip install .`. Also install `tox` via pip and simply run `tox`.

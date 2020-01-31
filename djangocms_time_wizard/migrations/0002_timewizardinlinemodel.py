@@ -22,8 +22,7 @@ class Migration(migrations.Migration):
                     primary_key=True,
                     related_name='djangocms_time_wizard_timewizardinlinemodel',
                     serialize=False,
-                    to='cms.CMSPlugin')
-                ),
+                    to='cms.CMSPlugin')),
             ],
             options={
                 'abstract': False,

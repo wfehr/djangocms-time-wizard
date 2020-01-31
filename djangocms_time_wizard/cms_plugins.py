@@ -1,10 +1,11 @@
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
-from djangocms_time_wizard.models import TimeWizardInlineModel, TimeWizardModel
-from djangocms_time_wizard.conf import DJANGOCMS_TIME_WIZARD_WRAPPER
 from polymorphic.admin import PolymorphicInlineSupportMixin
 from time_wizard.admin import PeriodModelInline
+
+from djangocms_time_wizard.conf import DJANGOCMS_TIME_WIZARD_WRAPPER
+from djangocms_time_wizard.models import TimeWizardInlineModel, TimeWizardModel
 
 
 class TimeWizardPluginBase(CMSPluginBase):
