@@ -7,4 +7,11 @@ class TimeWizardModel(TimeWizardMixin, CMSPlugin):
 
 
 class TimeWizardInlineModel(TimeWizardInlineMixin, CMSPlugin):
-    pass
+    # Copy of related PeriodModels when publishing the page
+    def copy_relations(self, old_instance):
+        for periods in old_instance.periods.all():
+            # pk + id to None: https://stackoverflow.com/a/25852807
+            periods.pk = None
+            periods.id = None
+            periods.container_id = self.id
+            periods.save()
