@@ -13,5 +13,5 @@ class TimeWizardInlineModel(TimeWizardInlineMixin, CMSPlugin):
             # pk + id to None: https://stackoverflow.com/a/25852807
             periods.pk = None
             periods.id = None
-            periods.container_id = self.id
+            periods.object_id = self.id
             periods.save()
