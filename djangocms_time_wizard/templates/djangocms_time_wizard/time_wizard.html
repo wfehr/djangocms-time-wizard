@@ -3,7 +3,7 @@
 {% for plugin in instance.child_plugin_instances %}
 {% render_plugin plugin %}
 {% endfor %}
-{% elif user.is_authenticated and user.is_staff %}
+{% elif request.toolbar and request.toolbar.edit_mode_active %}
 {% if show_wrapper %}
 <div class="time-wizard" style="border: 2px solid red;">
 {% endif %}
