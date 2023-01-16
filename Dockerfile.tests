@@ -12,6 +12,8 @@ RUN pip install tox
 WORKDIR /home/app
 
 COPY djangocms_time_wizard/ /home/app/djangocms_time_wizard/
+COPY tests/ /home/app/tests/
 COPY setup.py /home/app/setup.py
 COPY tox.ini /home/app/tox.ini
 COPY README.rst /home/app/README.rst
+COPY .coveragerc /home/app/.coveragerc

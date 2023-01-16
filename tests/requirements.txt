@@ -1,0 +1,4 @@
+coverage
+django-app-helper
+djangocms-text-ckeditor
+tox
