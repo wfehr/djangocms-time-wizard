@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                     on_delete=django.db.models.deletion.CASCADE,
                     parent_link=True,
                     primary_key=True,
-                    related_name='djangocms_time_wizard_timewizardmodel',
+                    related_name="%(app_label)s_%(class)s",
                     serialize=False,
                     to='cms.CMSPlugin')),
                 ('time_wizard', models.ForeignKey(
