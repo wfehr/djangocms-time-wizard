@@ -2,6 +2,17 @@
 Changelog
 =========
 
+v2.0.0 (2024-03-08)
+===================
+
+- added tests to check if migrations are missing
+- updated existing migrations to avoid 'missing migrations' for django 4+
+- added/changed test environment to check against django-cms 4.1
+- changed test environment to render plugins directly instead of depending on
+  pages
+- updated package informations regarding classifiers for python, django and
+  django-cms
+
 v1.0.7 (2023-09-28)
 ===================
 
