@@ -2,6 +2,11 @@
 Changelog
 =========
 
+v2.1.0 (2025-02-05)
+===================
+
+- fix version for django-time-wizard < 4.1.0 due to frontend errors
+
 v2.0.0 (2024-03-08)
 ===================
 
