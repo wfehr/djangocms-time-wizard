@@ -8,7 +8,9 @@ setup(
     packages=find_packages(),
     install_requires=[
         'django-cms',
-        'django-time-wizard',
+        # TODO: fix admin/plugin-integration with the inline models for holidays
+        # in plugin editing modal.
+        'django-time-wizard<4.1.0',
     ],
     include_package_data=True,
     description='Simple plugin with django-time-wizard relation',
