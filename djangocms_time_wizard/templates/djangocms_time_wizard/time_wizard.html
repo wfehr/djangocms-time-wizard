@@ -5,7 +5,7 @@
 {% endfor %}
 {% elif request.toolbar and request.toolbar.edit_mode_active %}
 {% if show_wrapper %}
-<div class="time-wizard" style="border: 2px solid red;">
+<div class="time-wizard">
 {% endif %}
   {% for plugin in instance.child_plugin_instances %}
   {% render_plugin plugin %}
