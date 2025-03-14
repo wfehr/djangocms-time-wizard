@@ -2,6 +2,11 @@
 Changelog
 =========
 
+v2.1.1 (2025-03-14)
+===================
+
+- semi-fix for #8; initializing works better, but is not perfect yet
+
 v2.1.0 (2025-02-05)
 ===================
 
