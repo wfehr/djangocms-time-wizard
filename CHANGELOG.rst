@@ -2,6 +2,12 @@
 Changelog
 =========
 
+v2.2.0 (2025-04-10)
+===================
+
+- remove red border; fix #6
+- updated frontend wrapper logic to be more dynamic via JavaScript
+
 v2.1.1 (2025-03-14)
 ===================
 
