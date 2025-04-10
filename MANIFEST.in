@@ -1,3 +1,4 @@
 include LICENSE
 include README.md
 recursive-include djangocms_time_wizard/templates *
+recursive-include djangocms_time_wizard/static *
