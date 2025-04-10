@@ -1,7 +1,7 @@
 #!/bin/sh
 
 docker build . -f $(dirname $0)/Dockerfile.tests -t djangocms-time-wizard-unittests
-docker_compose="docker-compose -f $(dirname $0)/run-tests.compose.yaml"
+docker_compose="docker compose -f $(dirname $0)/run-tests.compose.yaml"
 
 $docker_compose run --rm test tox
 exit_status=$?
