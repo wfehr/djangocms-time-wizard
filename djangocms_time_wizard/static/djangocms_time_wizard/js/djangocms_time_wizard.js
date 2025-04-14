@@ -73,6 +73,7 @@ const setupDjangoCMSTimeWizardWrapper = function () {
 
     styleForVisibility()
     $(window).on('resize', updateStyling)
+    $(window).on('scroll', updateStyling)
   })
 }
 
