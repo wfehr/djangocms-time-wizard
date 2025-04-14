@@ -2,6 +2,12 @@
 Changelog
 =========
 
+v2.3.0 (2025-04-14)
+===================
+
+- update wrapper-overlay on scroll-events
+- integrated debounce for resize/scroll listener
+
 v2.2.1 (2025-04-10)
 ===================
 
