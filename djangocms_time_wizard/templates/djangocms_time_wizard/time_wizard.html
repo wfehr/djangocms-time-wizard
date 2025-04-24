@@ -1,6 +1,6 @@
 {% load cms_tags static sekizai_tags %}
 {% if not instance.is_published and show_wrapper and request.toolbar and request.toolbar.edit_mode_active %}
-<!-- time-wizard-insertion-point -->
+<!-- time-wizard-insertion-point-start {{ instance.id }} -->
 {% endif %}
 {% if instance.is_published or request.toolbar and request.toolbar.edit_mode_active %}
 {% for plugin in instance.child_plugin_instances %}
@@ -8,6 +8,7 @@
 {% endfor %}
 {% endif %}
 {% if not instance.is_published and show_wrapper and request.toolbar and request.toolbar.edit_mode_active %}
+<!-- time-wizard-insertion-point-end {{ instance.id }} -->
 {% addtoblock "css" %}
 <link rel="stylesheet" href="{% static "djangocms_time_wizard/css/djangocms_time_wizard.css" %}">
 {% endaddtoblock %}

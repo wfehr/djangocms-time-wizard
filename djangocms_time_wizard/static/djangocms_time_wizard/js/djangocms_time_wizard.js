@@ -46,7 +46,7 @@ const setupDjangoCMSTimeWizardWrapper = function () {
     document.body,
     NodeFilter.SHOW_COMMENT,
     {
-      acceptNode: (node) => node.nodeValue.trim() === 'time-wizard-insertion-point'
+      acceptNode: (node) => node.nodeValue.trim().includes('time-wizard-insertion-point')
         ? NodeFilter.FILTER_ACCEPT
         : NodeFilter.FILTER_SKIP
     },
@@ -54,35 +54,45 @@ const setupDjangoCMSTimeWizardWrapper = function () {
   )
   let comment
   while (comment = iterator.nextNode()) {
-    const $el = $('<div class="time-wizard hide"></div>')[0]
+    let cls = comment.data.includes('-start') ? 'start' : 'end'
+    const instanceId = comment.data.replace('time-wizard-insertion-point-start', '').replace('time-wizard-insertion-point-end', '').trim()
+    const $el = $('<div class="time-wizard time-wizard-' + cls + '" data-instance-id="' + instanceId + '"></div>')[0]
     comment.parentNode.insertBefore($el, comment)
     comment.remove()
   }
 
   // set position/size and hover-effects depending on the next sibling
-  $('.time-wizard').each(function () {
+  $('.time-wizard.time-wizard-start').each(function () {
     const wrapper = $(this)
+    const instanceId = wrapper.data('instance-id')
     const nextPlugin = $(wrapper.find('+ *')[0])
+    const areaEnd = $('.time-wizard.time-wizard-end[data-instance-id="' + instanceId + '"]')
 
-    // hide/show when hovering the sibling or wrapper itself
-    // (when wrapper gets hidden, hover of sibling needs to enable it again)
-    const addHover = function () {
-      wrapper.css('display', 'none')
+    let wrapperArea = null
+    const onMouseMove = function (e) {
+      if (
+        e.clientX < wrapperArea.left ||
+        e.clientX > wrapperArea.right ||
+        e.clientY < wrapperArea.top ||
+        e.clientY > wrapperArea.bottom
+      ) {
+        wrapper.css('display', 'block')
+        $(document).off('mousemove', onMouseMove)
+      }
     }
-    const removeHover = function () {
-      wrapper.css('display', 'block')
+    const addHover = function () {
+      wrapperArea = wrapper[0].getBoundingClientRect()
+      wrapper.css('display', 'none')
+      $(document).on('mousemove', onMouseMove)
     }
     wrapper.on('mouseenter', addHover)
-    wrapper.on('mouseleave', removeHover)
-    nextPlugin.on('mouseenter', addHover)
-    nextPlugin.on('mouseleave', removeHover)
 
     const updateStyling = function () {
       wrapper.removeClass('hide')
 
       const offsetLeft = nextPlugin[0].offsetLeft
       const offsetTop = nextPlugin[0].offsetTop
-      const offsetHeight = nextPlugin[0].offsetHeight
+      const offsetHeight = areaEnd[0].offsetTop - offsetTop
       const offsetWidth = nextPlugin[0].offsetWidth
 
       wrapper.css(
