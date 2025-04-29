@@ -66,7 +66,7 @@ const setupDjangoCMSTimeWizardWrapper = function () {
     const wrapper = $(this)
     const instanceId = wrapper.data('instance-id')
     const nextPlugin = $(wrapper.find('+ *')[0])
-    const areaEnd = $('.time-wizard.time-wizard-end[data-instance-id="' + instanceId + '"]')
+    const areaEnd = wrapper.parent().find('.time-wizard.time-wizard-end[data-instance-id="' + instanceId + '"]')
 
     let wrapperArea = null
     const onMouseMove = function (e) {
@@ -88,25 +88,25 @@ const setupDjangoCMSTimeWizardWrapper = function () {
     wrapper.on('mouseenter', addHover)
 
     const updateStyling = function () {
-      wrapper.removeClass('hide')
+      if (wrapper.is(':visible')) {
+        const offsetLeft = nextPlugin[0].offsetLeft
+        const offsetTop = nextPlugin[0].offsetTop
+        const offsetHeight = areaEnd[0].offsetTop - offsetTop
+        const offsetWidth = nextPlugin[0].offsetWidth
 
-      const offsetLeft = nextPlugin[0].offsetLeft
-      const offsetTop = nextPlugin[0].offsetTop
-      const offsetHeight = areaEnd[0].offsetTop - offsetTop
-      const offsetWidth = nextPlugin[0].offsetWidth
-
-      wrapper.css(
-        {
-          'height': offsetHeight + 'px',
-          'left': offsetLeft + 'px',
-          'top': offsetTop + 'px',
-          'width': offsetWidth + 'px',
-        }
-      )
+        wrapper.css(
+          {
+            'height': offsetHeight + 'px',
+            'left': offsetLeft + 'px',
+            'top': offsetTop + 'px',
+            'width': offsetWidth + 'px',
+          }
+        )
+      }
     }
     let intervalId
     const styleForVisibility = function () {
-      if (nextPlugin.is(':visible')) {
+      if (wrapper.is(':visible')) {
         updateStyling()
         stopInterval(intervalId)
       }

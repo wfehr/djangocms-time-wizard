@@ -1,4 +1,4 @@
-.time-wizard {
+.time-wizard.time-wizard-start {
   background: repeating-linear-gradient(-45deg, #dedede, #dedede 10px, #a9a9a9 10px, #a9a9a9 20px);
   opacity: .5;
   position: absolute;
