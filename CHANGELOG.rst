@@ -2,6 +2,12 @@
 Changelog
 =========
 
+v2.3.3 (2025-05-05)
+===================
+
+- set min-height/-width for the overlay
+- use the next visible sibling to calculate the height
+
 v2.3.2 (2025-04-29)
 ===================
 
