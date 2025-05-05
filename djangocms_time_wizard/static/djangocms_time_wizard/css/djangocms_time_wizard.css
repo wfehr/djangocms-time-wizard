@@ -1,5 +1,7 @@
 .time-wizard.time-wizard-start {
   background: repeating-linear-gradient(-45deg, #dedede, #dedede 10px, #a9a9a9 10px, #a9a9a9 20px);
+  min-height: 30px;
+  min-width: 30px;
   opacity: .5;
   position: absolute;
   z-index: 10;

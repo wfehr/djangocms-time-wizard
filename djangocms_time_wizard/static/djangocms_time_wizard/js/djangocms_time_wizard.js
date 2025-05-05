@@ -61,11 +61,10 @@ const setupDjangoCMSTimeWizardWrapper = function () {
     comment.remove()
   }
 
-  // set position/size and hover-effects depending on the next sibling
+  // set position/size and hover-effects depending on the next sibling(s)
   $('.time-wizard.time-wizard-start').each(function () {
     const wrapper = $(this)
     const instanceId = wrapper.data('instance-id')
-    const nextPlugin = $(wrapper.find('+ *')[0])
     const areaEnd = wrapper.parent().find('.time-wizard.time-wizard-end[data-instance-id="' + instanceId + '"]')
 
     let wrapperArea = null
@@ -89,10 +88,22 @@ const setupDjangoCMSTimeWizardWrapper = function () {
 
     const updateStyling = function () {
       if (wrapper.is(':visible')) {
+        let nextPlugin = null
+        wrapper.nextUntil('.time-wizard-end[data-instance-id="' + instanceId + '"]').each(function () {
+          if ($(this).is(':visible') && nextPlugin === null) {
+            nextPlugin = $(this)
+          }
+        })
+        if (nextPlugin === null) {
+          nextPlugin = $(wrapper.find('+ *')[0])
+        }
+
         const offsetLeft = nextPlugin[0].offsetLeft
         const offsetTop = nextPlugin[0].offsetTop
-        const offsetHeight = areaEnd[0].offsetTop - offsetTop
         const offsetWidth = nextPlugin[0].offsetWidth
+        // depending on the styling of surrounding/outer elements, the "end"-div might not be positioned correctly
+        // -> set the height to at least the height of the next visible plugin, of possible
+        const offsetHeight = Math.max(areaEnd[0].offsetTop - offsetTop, nextPlugin[0].offsetHeight)
 
         wrapper.css(
           {
