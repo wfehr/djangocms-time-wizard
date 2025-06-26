@@ -9,7 +9,7 @@ HELPER_SETTINGS = {
         'polymorphic',
         'time_wizard',
         'djangocms_time_wizard',
-        'djangocms_text_ckeditor',
+        'djangocms_text',
     ),
     'SECRET_KEY': 'foobar1337',
     'TIME_WIZARD_COUNTRIES': ['US'],
