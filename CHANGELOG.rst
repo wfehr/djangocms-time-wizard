@@ -2,6 +2,13 @@
 Changelog
 =========
 
+v2.4.0 (2025-06-26)
+===================
+
+- updated test environment to run with more python versions
+- use the new djangocms-text in tests
+- support django 5.1 + 5.2 and cms 5.0
+
 v2.3.3 (2025-05-05)
 ===================
 
