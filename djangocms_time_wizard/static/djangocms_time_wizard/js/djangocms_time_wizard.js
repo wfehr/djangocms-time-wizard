@@ -56,8 +56,11 @@ const setupDjangoCMSTimeWizardWrapper = function () {
   while (comment = iterator.nextNode()) {
     let cls = comment.data.includes('-start') ? 'start' : 'end'
     const instanceId = comment.data.replace('time-wizard-insertion-point-start', '').replace('time-wizard-insertion-point-end', '').trim()
-    const $el = $('<div class="time-wizard time-wizard-' + cls + '" data-instance-id="' + instanceId + '"></div>')[0]
-    comment.parentNode.insertBefore($el, comment)
+    const $el = $('<div class="time-wizard time-wizard-' + cls + '" data-instance-id="' + instanceId + '"></div>')
+    if (comment.parentNode.nodeName === 'UL') {
+      $el.css('display', 'inline-block')
+    }
+    comment.parentNode.insertBefore($el[0], comment)
     comment.remove()
   }
 
@@ -75,7 +78,11 @@ const setupDjangoCMSTimeWizardWrapper = function () {
         e.clientY < wrapperArea.top ||
         e.clientY > wrapperArea.bottom
       ) {
-        wrapper.css('display', 'block')
+        if (wrapper.parent()[0].nodeName === 'UL') {
+          wrapper.css('display', 'inline-block')
+        } else {
+          wrapper.css('display', 'block')
+        }
         $(document).off('mousemove', onMouseMove)
       }
     }
@@ -100,9 +107,10 @@ const setupDjangoCMSTimeWizardWrapper = function () {
 
         const offsetLeft = nextPlugin[0].offsetLeft
         const offsetTop = nextPlugin[0].offsetTop
-        const offsetWidth = nextPlugin[0].offsetWidth
         // depending on the styling of surrounding/outer elements, the "end"-div might not be positioned correctly
-        // -> set the height to at least the height of the next visible plugin, of possible
+        // -> set the width to at least the width of the next visible plugin, if possible
+        const offsetWidth = Math.max(areaEnd[0].offsetLeft - offsetLeft, nextPlugin[0].offsetWidth)
+        // -> set the height to at least the height of the next visible plugin, if possible
         const offsetHeight = Math.max(areaEnd[0].offsetTop - offsetTop, nextPlugin[0].offsetHeight)
 
         wrapper.css(
