@@ -2,6 +2,11 @@
 Changelog
 =========
 
+v2.4.1 (2025-07-29)
+===================
+
+- fix wrapper-styling for edge-case inside 'ul'-element
+
 v2.4.0 (2025-06-26)
 ===================
 
